@@ -5,8 +5,15 @@
   xmlns:w="http://niem.gov/niem/wantlist/2.2"
   xmlns:aamva_d20="http://release.niem.gov/niem/codes/aamva_d20/4.0/"
   xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
-  xmlns:geo="http://release.niem.gov/niem/adapters/geospatial/4.0/" xmlns:gml="http://www.opengis.net/gml/3.2">
+  xmlns:geo="http://release.niem.gov/niem/adapters/geospatial/4.0/"
+  xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.0/">
   <w:Element w:name="geo:LocationGeospatialPoint" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="hs:ParentChildAssociation" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="hs:ParentChildKinshipCategoryCode"
+    w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="hs:PersonOtherKinAssociation" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="hs:PersonOtherKinAssociationCategoryCode"
+    w:isReference="false" w:nillable="false"/>
   <w:Element w:name="j:Crash" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="j:InjurySeverityCode" w:isReference="false" w:nillable="false"/>
   <w:Element w:name="j:JusticeMetadata" w:isReference="false" w:nillable="true"/>
@@ -18,6 +25,9 @@
     w:isReference="false" w:nillable="false"/>
   <w:Element w:name="nc:MeasureDecimalValue" w:isReference="false" w:nillable="false"/>
   <w:Element w:name="nc:MeasurePointAbstract" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="nc:PersonUnionAssociation" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="nc:PersonUnionCategoryCode" w:isReference="false" w:nillable="false"/>
+  <w:Element w:name="nc:PersonUnionStatusCode" w:isReference="false" w:nillable="false"/>
   <w:Type w:name="aamva_d20:AccidentSeverityCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="1"/>
     <w:Facet w:facet="enumeration" w:value="2"/>
@@ -29,6 +39,79 @@
   <w:Type w:name="geo:PointType" w:isRequested="false">
     <w:ElementInType w:name="gml:Point" w:isReference="false"
       w:minOccurs="1" w:maxOccurs="1"/>
+  </w:Type>
+  <w:Type w:name="hs:ParentChildAssociationType" w:isRequested="false">
+    <w:ElementInType w:name="hs:Child" w:isReference="false"
+      w:minOccurs="1" w:maxOccurs="1"/>
+    <w:ElementInType w:name="hs:Parent" w:isReference="false"
+      w:minOccurs="1" w:maxOccurs="1"/>
+    <w:ElementInType w:name="hs:ParentChildKinshipCategoryAbstract"
+      w:isReference="false" w:minOccurs="0" w:maxOccurs="1"/>
+    <w:ElementInType w:name="hs:ChildBirthOrderNumeric"
+      w:isReference="false" w:minOccurs="0" w:maxOccurs="1"/>
+  </w:Type>
+  <w:Type w:name="hs:ParentChildKinshipCategoryCodeSimpleType" w:isRequested="false">
+    <w:Facet w:facet="enumeration" w:value="Adoption"/>
+    <w:Facet w:facet="enumeration" w:value="Biological"/>
+    <w:Facet w:facet="enumeration" w:value="Foster"/>
+    <w:Facet w:facet="enumeration" w:value="Guardianship"/>
+    <w:Facet w:facet="enumeration" w:value="Marriage"/>
+    <w:Facet w:facet="enumeration" w:value="Putative"/>
+    <w:Facet w:facet="enumeration" w:value="Surrogate"/>
+  </w:Type>
+  <w:Type w:name="hs:PersonOtherKinAssociationCodeSimpleType" w:isRequested="false">
+    <w:Facet w:facet="enumeration" w:value="Authority Figure"/>
+    <w:Facet w:facet="enumeration" w:value="Babysitter"/>
+    <w:Facet w:facet="enumeration" w:value="Brother"/>
+    <w:Facet w:facet="enumeration" w:value="Brother-In-Law"/>
+    <w:Facet w:facet="enumeration" w:value="Clergy"/>
+    <w:Facet w:facet="enumeration" w:value="Coach"/>
+    <w:Facet w:facet="enumeration" w:value="Domestic Partner"/>
+    <w:Facet w:facet="enumeration" w:value="Father-in-Law"/>
+    <w:Facet w:facet="enumeration" w:value="Fiance"/>
+    <w:Facet w:facet="enumeration" w:value="Fiancee"/>
+    <w:Facet w:facet="enumeration" w:value="Fictive Kin"/>
+    <w:Facet w:facet="enumeration" w:value="Godfather"/>
+    <w:Facet w:facet="enumeration" w:value="Godmother"/>
+    <w:Facet w:facet="enumeration" w:value="Granddaughter"/>
+    <w:Facet w:facet="enumeration" w:value="Grandson"/>
+    <w:Facet w:facet="enumeration" w:value="Great-Granddaughter"/>
+    <w:Facet w:facet="enumeration" w:value="Great-Grandson"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Aunt"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Female Cousin"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Grandfather"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Grandmother"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Great Grandfather"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Great Grandmother"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Male Cousin"/>
+    <w:Facet w:facet="enumeration" w:value="Maternal Uncle"/>
+    <w:Facet w:facet="enumeration" w:value="Mother-in-Law"/>
+    <w:Facet w:facet="enumeration" w:value="Neighbor"/>
+    <w:Facet w:facet="enumeration" w:value="Nephew"/>
+    <w:Facet w:facet="enumeration" w:value="Niece"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Aunt"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Female Cousin"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Grandfather"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Grandmother"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Great Grandfather"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Great Grandmother"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Male Cousin"/>
+    <w:Facet w:facet="enumeration" w:value="Paternal Uncle"/>
+    <w:Facet w:facet="enumeration" w:value="Roommate"/>
+    <w:Facet w:facet="enumeration" w:value="Significant Other"/>
+    <w:Facet w:facet="enumeration" w:value="Sister"/>
+    <w:Facet w:facet="enumeration" w:value="Sister-In-Law"/>
+    <w:Facet w:facet="enumeration" w:value="Teacher"/>
+    <w:Facet w:facet="enumeration" w:value="Unrelated Friend"/>
+  </w:Type>
+  <w:Type w:name="hs:PersonOtherKinAssociationType" w:isRequested="false">
+    <w:ElementInType w:name="hs:SourcePerson" w:isReference="false"
+      w:minOccurs="1" w:maxOccurs="1"/>
+    <w:ElementInType w:name="hs:TargetPerson" w:isReference="false"
+      w:minOccurs="1" w:maxOccurs="1"/>
+    <w:ElementInType
+      w:name="hs:PersonOtherKinAssociationCategoryAbstract"
+      w:isReference="false" w:minOccurs="1" w:maxOccurs="unbounded"/>
   </w:Type>
   <w:Type w:name="j:ChargeType" w:isRequested="false">
     <w:ElementInType w:name="j:ChargeDescriptionText"
@@ -90,6 +173,16 @@
     <w:ElementInType w:name="nc:ActivityDate" w:isReference="false"
       w:minOccurs="1" w:maxOccurs="1"/>
   </w:Type>
+  <w:Type w:name="nc:AssociationType" w:isRequested="true">
+    <w:ElementInType w:name="nc:AssociationDateRange"
+      w:isReference="false" w:minOccurs="0" w:maxOccurs="1"/>
+  </w:Type>
+  <w:Type w:name="nc:DateRangeType" w:isRequested="false">
+    <w:ElementInType w:name="nc:StartDate" w:isReference="false"
+      w:minOccurs="0" w:maxOccurs="unbounded"/>
+    <w:ElementInType w:name="nc:EndDate" w:isReference="false"
+      w:minOccurs="0" w:maxOccurs="unbounded"/>
+  </w:Type>
   <w:Type w:name="nc:DateType" w:isRequested="false">
     <w:ElementInType w:name="nc:DateRepresentation"
       w:isReference="false" w:minOccurs="1" w:maxOccurs="1"/>
@@ -142,6 +235,10 @@
     <w:ElementInType w:name="nc:MeasureValueAbstract"
       w:isReference="false" w:minOccurs="1" w:maxOccurs="1"/>
   </w:Type>
+  <w:Type w:name="nc:PersonAssociationType" w:isRequested="true">
+    <w:ElementInType w:name="nc:Person" w:isReference="false"
+      w:minOccurs="0" w:maxOccurs="unbounded"/>
+  </w:Type>
   <w:Type w:name="nc:PersonNameTextType" w:isRequested="false">
     <w:AttributeInType w:name="nc:sequenceID" w:minOccurs="0" w:maxOccurs="1"/>
   </w:Type>
@@ -161,6 +258,28 @@
       w:minOccurs="1" w:maxOccurs="1"/>
     <w:ElementInType w:name="nc:PersonAugmentationPoint"
       w:isReference="false" w:minOccurs="0" w:maxOccurs="unbounded"/>
+  </w:Type>
+  <w:Type w:name="nc:PersonUnionAssociationType" w:isRequested="false">
+    <w:ElementInType w:name="nc:PersonUnionCategoryAbstract"
+      w:isReference="false" w:minOccurs="0" w:maxOccurs="1"/>
+    <w:ElementInType w:name="nc:PersonUnionStatusAbstract"
+      w:isReference="false" w:minOccurs="0" w:maxOccurs="1"/>
+  </w:Type>
+  <w:Type w:name="nc:PersonUnionCategoryCodeSimpleType" w:isRequested="false">
+    <w:Facet w:facet="enumeration" w:value="civil union"/>
+    <w:Facet w:facet="enumeration" w:value="common law"/>
+    <w:Facet w:facet="enumeration" w:value="domestic partnership"/>
+    <w:Facet w:facet="enumeration" w:value="married"/>
+    <w:Facet w:facet="enumeration" w:value="unknown"/>
+  </w:Type>
+  <w:Type w:name="nc:PersonUnionStatusCodeSimpleType" w:isRequested="false">
+    <w:Facet w:facet="enumeration" w:value="anulled"/>
+    <w:Facet w:facet="enumeration" w:value="dissolved"/>
+    <w:Facet w:facet="enumeration" w:value="married"/>
+    <w:Facet w:facet="enumeration" w:value="separated"/>
+    <w:Facet w:facet="enumeration" w:value="single"/>
+    <w:Facet w:facet="enumeration" w:value="unknown"/>
+    <w:Facet w:facet="enumeration" w:value="widowed"/>
   </w:Type>
   <w:Type w:name="unece:LengthCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="4H"/>

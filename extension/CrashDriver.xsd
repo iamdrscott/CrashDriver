@@ -3,6 +3,7 @@
     ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ExtensionSchemaDocument"
     targetNamespace="http://example.com/CrashDriver/1.0/" version="1"
     xmlns:exch="http://example.com/CrashDriver/1.0/"
+    xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.0/"
     xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.0/"
     xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
     xmlns:geo="http://release.niem.gov/niem/adapters/geospatial/4.0/"
@@ -24,6 +25,7 @@
     
     <xs:import schemaLocation="./PrivacyMetadata.xsd" namespace="http://example.com/PrivacyMetadata/1.0/"/>
     
+    <xs:import schemaLocation="../niem/domains/humanServices/4.0/hs.xsd" namespace="http://release.niem.gov/niem/domains/humanServices/4.0/"/>    
     <xs:import schemaLocation="../niem/domains/jxdm/6.0/jxdm.xsd" namespace="http://release.niem.gov/niem/domains/jxdm/6.0/"/>
     <xs:import schemaLocation="../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
     <xs:import schemaLocation="../niem/adapters/geospatial/4.0/geospatial.xsd" namespace="http://release.niem.gov/niem/adapters/geospatial/4.0/"/>
@@ -43,10 +45,12 @@
         <xs:complexContent>
             <xs:extension base="structures:ObjectType">
                 <xs:sequence>
-                    <xs:element ref="nc:Person" maxOccurs="unbounded"/>
                     <xs:element ref="j:Crash"/>
-                    <xs:element ref="j:PersonChargeAssociation" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="j:Charge" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="j:PersonChargeAssociation" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="nc:PersonUnionAssociation" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="hs:ParentChildAssociation" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="hs:PersonOtherKinAssociation" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="j:JusticeMetadata" minOccurs="0"/>
                     <xs:element ref="priv:PrivacyMetadata" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>

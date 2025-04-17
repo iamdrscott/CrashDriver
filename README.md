@@ -1,27 +1,8 @@
-# Crash Driver Report IEPD
+# Crash Driver Report message specification
 
-This example IEPD is designed for showing conversion between NIEM XML, NIEM JSON, and NIEM RDF.
-It exercises most of the features in the NDR:
+This example message specification is designed to exercise most of the features in the NIEM 6.0 technical architecture.
 
-* Adapters
-* Associations
-* Augmentations
-  - Augmentation elements
-  - Augmentations substitutable for an augmentation point
-* Elements with attributes
-  - With simple content
-  - With complex content
-* Metadata
-  - Single metadata pointer
-  - Multiple metadata pointers
-* References
-* Repeated elements
+* *model.xsd:*  The XSD representation of the message model.
+* *model.cmf:*  The CMF representation of the message model.  It conforms to CMF version 1.0-alpha.8
+* The initial property of this message type is `exch:CrashDriverInfo`
 
-Not exercised yet:
-
-* `structures:relationshipMetadata`
-* `xs:list`
-* `xml:base`
-* `xml:lang`
-* `xml:space`
-* `xsi:type`

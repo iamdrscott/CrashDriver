@@ -500,6 +500,7 @@
     <Namespace structures:ref="priv" xsi:nil="true"/>
     <Datatype structures:ref="xs.IDREFS" xsi:nil="true"/>
     <AttributeIndicator>true</AttributeIndicator>
+    <RefAttributeIndicator>true</RefAttributeIndicator>
   </DataProperty>
   <Class structures:id="exch.CrashDriverInfoType">
     <Name>CrashDriverInfoType</Name>

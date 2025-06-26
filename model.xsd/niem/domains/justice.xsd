@@ -15,11 +15,11 @@
   <xs:annotation>
     <xs:documentation>Justice</xs:documentation>
   </xs:annotation>
-  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-xs/6.0/" schemaLocation="../adapters/niem-xs.xsd"/>
-  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/codes/aamva_d20/6.0/" schemaLocation="../codes/aamva_d20.xsd"/>
   <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/" schemaLocation="../niem-core.xsd"/>
+  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/codes/aamva_d20/6.0/" schemaLocation="../codes/aamva_d20.xsd"/>
+  <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-xs/6.0/" schemaLocation="../adapters/niem-xs.xsd"/>
   <xs:import namespace="https://docs.oasis-open.org/niemopen/ns/model/structures/6.0/" schemaLocation="../utility/structures.xsd"/>
-  <xs:complexType name="ChargeType">
+  <xs:complexType name="ChargeType" appinfo:referenceCode="ANY">
     <xs:annotation>
       <xs:documentation>A data type for a formal allegation that a specific person has committed a specific offense.</xs:documentation>
     </xs:annotation>
@@ -28,8 +28,9 @@
         <xs:sequence>
           <xs:element ref="j:ChargeDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="j:ChargeFelonyIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ChargeAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute ref="nc:metadataRef" appinfo:augmentingNamespace="http://example.com/CrashDriver/1.2/"/>
+        <xs:attribute ref="nc:metadataRef"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -41,11 +42,12 @@
       <xs:extension base="nc:PersonType">
         <xs:sequence>
           <xs:element ref="j:DriverLicense"/>
+          <xs:element ref="j:CrashDriverAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="CrashPersonType">
+  <xs:complexType name="CrashPersonType" appinfo:referenceCode="ANY">
     <xs:annotation>
       <xs:documentation>A data type for any person involved in a traffic accident.</xs:documentation>
     </xs:annotation>
@@ -53,6 +55,7 @@
       <xs:extension base="nc:PersonType">
         <xs:sequence>
           <xs:element ref="j:CrashPersonInjury" maxOccurs="unbounded"/>
+          <xs:element ref="j:CrashPersonAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -66,6 +69,7 @@
         <xs:sequence>
           <xs:element ref="j:CrashVehicle" maxOccurs="unbounded"/>
           <xs:element ref="j:CrashPerson" maxOccurs="unbounded"/>
+          <xs:element ref="j:CrashAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -78,6 +82,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="j:CrashDriver"/>
+          <xs:element ref="j:CrashVehicleAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -88,7 +93,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="structures:ObjectType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="j:DriverLicenseBaseAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -111,7 +118,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="nc:IncidentType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="j:DrivingIncidentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -152,13 +161,18 @@
           <xs:element ref="j:JuvenileAsAdultIndicator" minOccurs="0"/>
           <xs:element ref="j:PersonChargeAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute ref="nc:metadataRef" appinfo:augmentingNamespace="http://example.com/CrashDriver/1.2/"/>
+        <xs:attribute ref="nc:metadataRef"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Charge" type="j:ChargeType" nillable="true">
     <xs:annotation>
       <xs:documentation>A formal allegation that a specific person has committed a specific offense.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChargeAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ChargeType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="ChargeDescriptionText" type="nc:TextType" nillable="true">
@@ -176,14 +190,29 @@
       <xs:documentation>A traffic accident.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="CrashAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CrashType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="CrashDriver" type="j:CrashDriverType" nillable="true">
     <xs:annotation>
       <xs:documentation>A motor vehicle driver involved into a traffic accident.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="CrashDriverAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CrashDriverType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="CrashPerson" type="j:CrashPersonType" nillable="true">
     <xs:annotation>
       <xs:documentation>A person involved in a traffic accident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CrashPersonAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CrashPersonType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="CrashPersonInjury" type="nc:InjuryType" nillable="true">
@@ -194,6 +223,11 @@
   <xs:element name="CrashVehicle" type="j:CrashVehicleType" nillable="true">
     <xs:annotation>
       <xs:documentation>A motor vehicle involved in a traffic accident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CrashVehicleAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CrashVehicleType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="CriminalInformationIndicator" type="niem-xs:boolean" nillable="true">
@@ -211,9 +245,19 @@
       <xs:documentation>An augmentation point for DriverLicenseType.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="DriverLicenseBaseAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for DriverLicenseBaseType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="DriverLicenseCardIdentification" type="nc:IdentificationType" nillable="true">
     <xs:annotation>
       <xs:documentation>An identification that is affixed to the raw materials (card stock, laminate, etc.) used in producing driver licenses and ID cards. The numbers are issued by the material's manufacturer and provide a unique reference to a card within a jurisdiction.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DrivingIncidentAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for DrivingIncidentType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="InjurySeverityCode" type="aamva_d20:AccidentSeverityCodeType" substitutionGroup="nc:InjurySeverityAbstract" nillable="true">
@@ -231,7 +275,7 @@
       <xs:documentation>True if a juvenile is to be processed as an adult; false otherwise.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="MetadataAugmentation" type="j:MetadataAugmentationType" substitutionGroup="nc:MetadataAugmentationPoint" nillable="true">
+  <xs:element name="MetadataAugmentation" type="j:MetadataAugmentationType" substitutionGroup="nc:MetadataAugmentationPoint">
     <xs:annotation>
       <xs:documentation>Additional information about a metadata.</xs:documentation>
     </xs:annotation>
@@ -241,7 +285,7 @@
       <xs:documentation>True if person is considered an adult, based on age/emancipation/etc.; false otherwise.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="PersonAugmentation" type="j:PersonAugmentationType" substitutionGroup="nc:PersonAugmentationPoint" nillable="true">
+  <xs:element name="PersonAugmentation" type="j:PersonAugmentationType" substitutionGroup="nc:PersonAugmentationPoint">
     <xs:annotation>
       <xs:documentation>Additional information about a person.</xs:documentation>
     </xs:annotation>

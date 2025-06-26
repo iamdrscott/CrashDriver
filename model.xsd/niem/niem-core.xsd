@@ -26,6 +26,7 @@
         <xs:sequence>
           <xs:element ref="nc:ActivityDate" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:ActivityLocation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:ActivityAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -36,16 +37,8 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:restriction base="niem-xs:decimal">
-        <xs:maxExclusive value="60.0">
-          <xs:annotation>
-            <xs:documentation>The highest value allowed (exclusive).</xs:documentation>
-          </xs:annotation>
-        </xs:maxExclusive>
-        <xs:minInclusive value="0.0">
-          <xs:annotation>
-            <xs:documentation>The lowest value allowed (inclusive).</xs:documentation>
-          </xs:annotation>
-        </xs:minInclusive>
+        <xs:maxExclusive value="60.0"/>
+        <xs:minInclusive value="0.0"/>
       </xs:restriction>
     </xs:simpleContent>
   </xs:complexType>
@@ -55,7 +48,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="structures:AssociationType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="nc:AssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -67,6 +62,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:DateRepresentation"/>
+          <xs:element ref="nc:DateAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -79,6 +75,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:IdentificationID" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:IdentificationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -89,7 +86,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="nc:ActivityType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="nc:IncidentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -102,8 +101,9 @@
         <xs:sequence>
           <xs:element ref="nc:InjuryDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:InjurySeverityAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:InjuryAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute ref="priv:privacyMetadataRef" appinfo:augmentingNamespace="http://example.com/CrashDriver/1.2/"/>
+        <xs:attribute ref="priv:privacyMetadataRef"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -115,6 +115,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:LatitudeDegreeValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:LatitudeCoordinateAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -125,16 +126,8 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:restriction base="niem-xs:decimal">
-        <xs:maxInclusive value="90.0">
-          <xs:annotation>
-            <xs:documentation>The maximum value for a latitude degree.</xs:documentation>
-          </xs:annotation>
-        </xs:maxInclusive>
-        <xs:minInclusive value="-90.0">
-          <xs:annotation>
-            <xs:documentation>The minimum value for a latitude degree.</xs:documentation>
-          </xs:annotation>
-        </xs:minInclusive>
+        <xs:maxInclusive value="90.0"/>
+        <xs:minInclusive value="-90.0"/>
       </xs:restriction>
     </xs:simpleContent>
   </xs:complexType>
@@ -146,6 +139,7 @@
       <xs:extension base="nc:MeasureType">
         <xs:sequence>
           <xs:element ref="nc:LengthUnitAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:LengthMeasureAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -159,6 +153,7 @@
         <xs:sequence>
           <xs:element ref="nc:GeographicCoordinateLatitude"/>
           <xs:element ref="nc:GeographicCoordinateLongitude"/>
+          <xs:element ref="nc:Location2DGeospatialCoordinateAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -171,6 +166,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:LocationGeospatialCoordinateAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:LocationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -183,6 +179,7 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:LongitudeDegreeValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:LongitudeCoordinateAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -193,16 +190,8 @@
     </xs:annotation>
     <xs:simpleContent>
       <xs:restriction base="niem-xs:decimal">
-        <xs:maxInclusive value="180.0">
-          <xs:annotation>
-            <xs:documentation>The maximum value for a longitude degree.</xs:documentation>
-          </xs:annotation>
-        </xs:maxInclusive>
-        <xs:minInclusive value="-180.0">
-          <xs:annotation>
-            <xs:documentation>The minimum value for a longitude degree.</xs:documentation>
-          </xs:annotation>
-        </xs:minInclusive>
+        <xs:maxInclusive value="180.0"/>
+        <xs:minInclusive value="-180.0"/>
       </xs:restriction>
     </xs:simpleContent>
   </xs:complexType>
@@ -214,11 +203,12 @@
       <xs:extension base="structures:ObjectType">
         <xs:sequence>
           <xs:element ref="nc:MeasureValueAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:MeasureAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="MetadataType">
+  <xs:complexType name="MetadataType" appinfo:referenceCode="ANY">
     <xs:annotation>
       <xs:documentation>A data type for information that further qualifies primary data; data about data.</xs:documentation>
     </xs:annotation>
@@ -237,7 +227,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="nc:AssociationType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="nc:PersonAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -259,12 +251,13 @@
           <xs:element ref="nc:PersonGivenName" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:PersonMiddleName" minOccurs="0" maxOccurs="unbounded" appinfo:orderedPropertyIndicator="true"/>
           <xs:element ref="nc:PersonSurName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:PersonNameAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute ref="nc:personNameCommentText"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="PersonType">
+  <xs:complexType name="PersonType" appinfo:referenceCode="ANY">
     <xs:annotation>
       <xs:documentation>A data type for a human being.</xs:documentation>
     </xs:annotation>
@@ -284,7 +277,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="nc:PersonAssociationType">
-        <xs:sequence/>
+        <xs:sequence>
+          <xs:element ref="nc:PersonUnionAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -301,7 +296,7 @@
       <xs:documentation>A data type for a character string.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="niem-xs:string"/>
+      <xs:restriction base="niem-xs:string"/>
     </xs:simpleContent>
   </xs:complexType>
   <xs:attribute name="metadataRef" type="xs:IDREFS">
@@ -314,6 +309,11 @@
       <xs:documentation>A comment about a kind of name for a person.</xs:documentation>
     </xs:annotation>
   </xs:attribute>
+  <xs:element name="ActivityAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ActivityType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="ActivityDate" type="nc:DateType" nillable="true">
     <xs:annotation>
       <xs:documentation>A date of an activity.</xs:documentation>
@@ -324,12 +324,22 @@
       <xs:documentation>A location of an activity.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="AssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for AssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="Date" type="niem-xs:date" substitutionGroup="nc:DateRepresentation" nillable="true">
     <xs:annotation>
       <xs:documentation>A full date.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="DateRepresentation" abstract="true">
+  <xs:element name="DateAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for DateType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DateRepresentation" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a representation of a date.</xs:documentation>
     </xs:annotation>
@@ -344,9 +354,24 @@
       <xs:documentation>A measurement of the angular distance between a point on the Earth and the Prime Meridian.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="IdentificationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for IdentificationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="IdentificationID" type="niem-xs:string" nillable="true">
     <xs:annotation>
       <xs:documentation>An identifier.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="IncidentAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for IncidentType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for InjuryType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="InjuryDescriptionText" type="nc:TextType" nillable="true">
@@ -354,7 +379,7 @@
       <xs:documentation>A description of an injury.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="InjurySeverityAbstract" abstract="true">
+  <xs:element name="InjurySeverityAbstract" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a severity of an injury received by a person involved into a Traffic Accident.</xs:documentation>
     </xs:annotation>
@@ -364,24 +389,49 @@
       <xs:documentation>A measurement of the length of an item.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="LatitudeCoordinateAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for LatitudeCoordinateType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="LatitudeDegreeValue" type="nc:LatitudeDegreeType" nillable="true">
     <xs:annotation>
       <xs:documentation>A value that specifies the degree of a latitude. The value comes from a restricted range between -90 (inclusive) and +90 (inclusive).</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="LengthUnitAbstract" abstract="true">
+  <xs:element name="LengthMeasureAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for LengthMeasureType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LengthUnitAbstract" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a unit of measure for length.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="Location2DGeospatialCoordinate" type="nc:Location2DGeospatialCoordinateType" substitutionGroup="nc:LocationGeospatialCoordinateAbstract">
+  <xs:element name="Location2DGeospatialCoordinate" type="nc:Location2DGeospatialCoordinateType" substitutionGroup="nc:LocationGeospatialCoordinateAbstract" nillable="true">
     <xs:annotation>
       <xs:documentation>A location identified by a latitude and longitude.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="LocationGeospatialCoordinateAbstract" abstract="true">
+  <xs:element name="Location2DGeospatialCoordinateAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for Location2DGeospatialCoordinateType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LocationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for LocationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LocationGeospatialCoordinateAbstract" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a geospatial location.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LongitudeCoordinateAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for LongitudeCoordinateType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="LongitudeDegreeValue" type="nc:LongitudeDegreeType" nillable="true">
@@ -389,17 +439,22 @@
       <xs:documentation>A value that specifies the degree of a longitude. The value comes from a restricted range between -180 (inclusive) and +180 (inclusive).</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="MeasureAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for MeasureType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="MeasureDecimalValue" type="niem-xs:decimal" substitutionGroup="nc:MeasurePointAbstract" nillable="true">
     <xs:annotation>
       <xs:documentation>A decimal measurement value.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="MeasurePointAbstract" substitutionGroup="nc:MeasureValueAbstract" abstract="true">
+  <xs:element name="MeasurePointAbstract" substitutionGroup="nc:MeasureValueAbstract" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a measurement value.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="MeasureValueAbstract" abstract="true">
+  <xs:element name="MeasureValueAbstract" abstract="true" nillable="true">
     <xs:annotation>
       <xs:documentation>A data concept for a measurement value.</xs:documentation>
     </xs:annotation>
@@ -422,6 +477,11 @@
   <xs:element name="Person" type="nc:PersonType" nillable="true">
     <xs:annotation>
       <xs:documentation>A human being.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for PersonAssociationType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="PersonAugmentationPoint" abstract="true">
@@ -449,6 +509,11 @@
       <xs:documentation>A combination of names and/or titles by which a person is known.</xs:documentation>
     </xs:annotation>
   </xs:element>
+  <xs:element name="PersonNameAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for PersonNameType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
   <xs:element name="PersonSurName" type="nc:PersonNameTextType" nillable="true">
     <xs:annotation>
       <xs:documentation>A last name or family name of a person.</xs:documentation>
@@ -457,6 +522,11 @@
   <xs:element name="PersonUnionAssociation" type="nc:PersonUnionAssociationType" nillable="true">
     <xs:annotation>
       <xs:documentation>An association between two persons who are in a state of union with each other.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonUnionAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for PersonUnionAssociationType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="ReportedDate" type="nc:DateType" nillable="true">

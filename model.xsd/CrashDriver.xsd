@@ -37,13 +37,19 @@
           <xs:element ref="hs:PersonOtherKinAssociation" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="nc:Metadata" minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="priv:PrivacyMetadata" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="exch:CrashDriverInfoAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CrashDriverInfo" type="exch:CrashDriverInfoType">
+  <xs:element name="CrashDriverInfo" type="exch:CrashDriverInfoType" nillable="true">
     <xs:annotation>
       <xs:documentation>A collection of legal charges associated with the driver of a vehicle in a crash.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CrashDriverInfoAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CrashDriverInfoType.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="PersonFictionalCharacterIndicator" type="niem-xs:boolean" substitutionGroup="nc:PersonAugmentationPoint" nillable="true">

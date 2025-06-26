@@ -583,6 +583,7 @@
     <Name>ChargeType</Name>
     <Namespace structures:ref="j" xsi:nil="true"/>
     <DocumentationText>A data type for a formal allegation that a specific person has committed a specific offense.</DocumentationText>
+    <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="j.ChargeDescriptionText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
@@ -615,6 +616,7 @@
     <Namespace structures:ref="j" xsi:nil="true"/>
     <DocumentationText>A data type for any person involved in a traffic accident.</DocumentationText>
     <SubClassOf structures:ref="nc.PersonType" xsi:nil="true"/>
+    <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="j.CrashPersonInjury" xsi:nil="true"/>
       <MinOccursQuantity>1</MinOccursQuantity>
@@ -831,6 +833,7 @@
     <Name>MetadataType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for information that further qualifies primary data; data about data.</DocumentationText>
+    <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.ReportedDate" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
@@ -873,6 +876,7 @@
     <Name>PersonType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for a human being.</DocumentationText>
+    <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.PersonBirthDate" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>

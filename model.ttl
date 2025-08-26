@@ -1,24 +1,31 @@
-@prefix aamva_d20:      <https://docs.oasis-open.org/niemopen/ns/model/codes/aamva_d20/6.0/#> .
-@prefix exch:           <http://example.com/CrashDriver/1.2/#> .
-@prefix hs:             <https://docs.oasis-open.org/niemopen/ns/model/domains/humanServices/6.0/#> .
-@prefix j:              <https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/#> .
-@prefix nc:             <https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/#> .
-@prefix priv:           <http://example.com/PrivacyMetadata/2.0/#> .
-@prefix xs:             <http://www.w3.org/2001/XMLSchema#> .
+@prefix aamva_d20:      <https://docs.oasis-open.org/niemopen/ns/model/codes/aamva_d20/6.0/> .
+@prefix exch:           <http://example.com/CrashDriver/1.3/> .
+@prefix gml:            <http://www.opengis.net/gml/3.2> .
+@prefix hs:             <https://docs.oasis-open.org/niemopen/ns/model/domains/humanServices/6.0/> .
+@prefix j:              <https://docs.oasis-open.org/niemopen/ns/model/domains/justice/6.0/> .
+@prefix nc:             <https://docs.oasis-open.org/niemopen/ns/model/niem-core/6.0/> .
+@prefix niem-gml:       <https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-gml/6.0/> .
+@prefix priv:           <http://example.com/PrivacyMetadata/2.0/> .
+@prefix xs:             <http://www.w3.org/2001/XMLSchema> .
 
-@prefix owl:            <http://www.w3.org/2002/07/owl##> .
-@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema##> .
-@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns##> .
-@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema> .
+
+priv:privacyRelationCode
+    a owl:DataProperty ;
+    rdfs:range priv:PrivacyCodeType .
 
 j:CrashDriver
     a owl:ObjectProperty ;
     rdfs:range j:CrashDriverType ;
     rdfs:comment "A motor vehicle driver involved into a traffic accident." .
 
-nc:DateRepresentation
-    a owl:DataProperty ;
-    rdfs:comment "A data concept for a representation of a date." .
+exch:ReferenceObjects
+    a owl:ObjectProperty ;
+    rdfs:range exch:ReferenceObjectType ;
+    rdfs:comment "Objects that do not apply to their parent (and appear only by reference)." .
 
 nc:ActivityDate
     a owl:ObjectProperty ;
@@ -40,6 +47,11 @@ nc:PersonUnionAssociation
     rdfs:range nc:PersonUnionAssociationType ;
     rdfs:comment "An association between two persons who are in a state of union with each other." .
 
+nc:PersonNameSalutationText
+    a owl:DataProperty ;
+    rdfs:range nc:TextType ;
+    rdfs:comment "A formal sign or expression of greeting that is appropriate for this person." .
+
 nc:PersonSurName
     a owl:DataProperty ;
     rdfs:range nc:PersonNameTextType ;
@@ -50,6 +62,11 @@ j:CrashPerson
     rdfs:range j:CrashPersonType ;
     rdfs:comment "A person involved in a traffic accident." .
 
+exch:PersonFictionalGenreCodeLiteral
+    a owl:DataProperty ;
+    rdfs:range exch:PersonFictionalGenreCodeSimpleType ;
+    rdfs:comment "A data type for the genre of a fictional character." .
+
 priv:PrivacyCode
     a owl:DataProperty ;
     rdfs:range priv:PrivacyCodeType .
@@ -59,6 +76,11 @@ nc:PersonMiddleName
     rdfs:range nc:PersonNameTextType ;
     rdfs:comment "A middle name of a person." .
 
+exch:PersonFictionalGenreCode
+    a owl:ObjectProperty ;
+    rdfs:range exch:PersonFictionalGenreCodeType ;
+    rdfs:comment "A genre of a fictional character." .
+
 j:InjurySeverityCode
     a owl:DataProperty ;
     rdfs:range aamva_d20:AccidentSeverityCodeType ;
@@ -67,6 +89,11 @@ j:InjurySeverityCode
 priv:PrivacyMetadata
     a owl:ObjectProperty ;
     rdfs:range priv:PrivacyMetadataType .
+
+exch:PersonFictionalCharacterIndicator
+    a owl:DataProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "True if this person is a fictional character in a literary work; false otherwise." .
 
 nc:GeographicCoordinateLatitude
     a owl:ObjectProperty ;
@@ -78,35 +105,25 @@ nc:PersonBirthDate
     rdfs:range nc:DateType ;
     rdfs:comment "A date a person was born." .
 
+nc:SourceIDText
+    a owl:DataProperty ;
+    rdfs:range nc:TextType ;
+    rdfs:comment "A number or string set by a data provider so that information that is sent can be retraced back to its source." .
+
 nc:GeographicCoordinateLongitude
     a owl:ObjectProperty ;
     rdfs:range nc:LongitudeCoordinateType ;
     rdfs:comment "A measurement of the angular distance between a point on the Earth and the Prime Meridian." .
 
-exch:CrashDriverInfo
-    a owl:ObjectProperty ;
-    rdfs:range exch:CrashDriverInfoType ;
-    rdfs:comment "A collection of legal charges associated with the driver of a vehicle in a crash." .
-
-exch:PersonFictionalCharacterIndicator
+hs:PersonOtherKinAssociationCategoryText
     a owl:DataProperty ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "True if this person is a fictional character in a literary work; false otherwise." .
-
-hs:Child
-    a owl:ObjectProperty ;
-    rdfs:range hs:ChildType ;
-    rdfs:comment "A person who was an unmarried minor at the time of his or her involvement in a judicial proceeding or non-judicial program." .
+    rdfs:range nc:TextType ;
+    rdfs:comment "A kind of kinship or other close personal relationship that exists from the source person to the target person." .
 
 nc:personNameCommentText
     a owl:DataProperty ;
     rdfs:range xsd:string ;
     rdfs:comment "A comment about a kind of name for a person." .
-
-hs:ParentChildAssociation
-    a owl:ObjectProperty ;
-    rdfs:range hs:ParentChildAssociationType ;
-    rdfs:comment "An association between a child and a person who is in a parent role toward that child." .
 
 j:Charge
     a owl:ObjectProperty ;
@@ -122,10 +139,6 @@ nc:MeasureValueText
     a owl:DataProperty ;
     rdfs:range nc:TextType ;
     rdfs:comment "A textual description of a measurement value." .
-
-nc:InjurySeverityAbstract
-    a owl:DataProperty ;
-    rdfs:comment "A data concept for a severity of an injury received by a person involved into a Traffic Accident." .
 
 j:PersonAdultIndicator
     a owl:DataProperty ;
@@ -162,22 +175,21 @@ j:JuvenileAsAdultIndicator
     rdfs:range xsd:boolean ;
     rdfs:comment "True if a juvenile is to be processed as an adult; false otherwise." .
 
-priv:privacyMetadataRef
-    a owl:DataProperty ;
-    rdfs:range xsd:IDREFS .
+niem-gml:LocationGeospatialPointAdapter
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf nc:LocationGeospatialCoordinateAbstract ;
+    rdfs:range niem-gml:PointAdapterType ;
+    rdfs:comment "A 2D or 3D geometric point.  A gml:Point is defined by a single coordinate tuple. The direct position of a point is specified by the gml:pos element which is of type gml:DirectPositionType." .
 
 j:DriverLicense
     a owl:ObjectProperty ;
     rdfs:range j:DriverLicenseType ;
     rdfs:comment "A license issued to a person granting driving privileges." .
 
-hs:PersonOtherKinAssociationCategoryAbstract
-    a owl:DataProperty ;
-    rdfs:comment "A data concept for describing the kinship or other close personal relationship that exists from the source person to the target person." .
-
-nc:LengthUnitAbstract
-    a null ;
-    rdfs:comment "A data concept for a unit of measure for length." .
+hs:TargetPerson
+    a owl:ObjectProperty ;
+    rdfs:range nc:PersonType ;
+    rdfs:comment "A person that represents the end point of a directed association" .
 
 nc:LongitudeDegreeValue
     a owl:DataProperty ;
@@ -204,6 +216,11 @@ nc:IdentificationID
     rdfs:range xsd:string ;
     rdfs:comment "An identifier." .
 
+nc:PersonUnionCategoryText
+    a owl:DataProperty ;
+    rdfs:range nc:TextType ;
+    rdfs:comment "A kind of union between two people." .
+
 j:DriverLicenseCardIdentification
     a owl:ObjectProperty ;
     rdfs:range nc:IdentificationType ;
@@ -214,28 +231,15 @@ nc:ActivityLocation
     rdfs:range nc:LocationType ;
     rdfs:comment "A location of an activity." .
 
-hs:Parent
-    a owl:ObjectProperty ;
-    rdfs:range nc:PersonType ;
-    rdfs:comment "A father or mother of a person." .
-
-nc:LocationGeospatialCoordinateAbstract
-    a owl:ObjectProperty ;
-    rdfs:comment "A data concept for a geospatial location." .
-
-nc:MeasureValueAbstract
-    a owl:DataProperty ;
-    rdfs:comment "A data concept for a measurement value." .
-
 nc:MeasureDecimalValue
     a owl:DataProperty ;
     rdfs:range xsd:decimal ;
     rdfs:comment "A decimal measurement value." .
 
-nc:metadataRef
+hs:HouseholdMemberIndicator
     a owl:DataProperty ;
-    rdfs:range xsd:IDREFS ;
-    rdfs:comment "A list of metadata objects that apply to a node or object represented by an XML element." .
+    rdfs:range xsd:boolean ;
+    rdfs:comment "True if the associated person is a household member; false otherwise." .
 
 j:Crash
     a owl:ObjectProperty ;
@@ -267,6 +271,11 @@ hs:PersonOtherKinAssociationCategoryCode
     rdfs:range hs:PersonOtherKinAssociationCodeType ;
     rdfs:comment "A code list that describes the nature of the kinship or other close personal relationship from a source person to a target person." .
 
+exch:CrashDriverInfo
+    a owl:ObjectProperty ;
+    rdfs:range exch:CrashDriverInfoType ;
+    rdfs:comment "A collection of legal charges associated with the driver of a vehicle in a crash." .
+
 nc:PersonName
     a owl:ObjectProperty ;
     rdfs:range nc:PersonNameType ;
@@ -283,28 +292,54 @@ nc:Location2DGeospatialCoordinate
     rdfs:range nc:Location2DGeospatialCoordinateType ;
     rdfs:comment "A location identified by a latitude and longitude." .
 
-nc:MeasurePointAbstract
+hs:SourcePerson
+    a owl:ObjectProperty ;
+    rdfs:range nc:PersonType ;
+    rdfs:comment "A person that is the start point of a directed association" .
+
+nc:YearDate
     a owl:DataProperty ;
-    rdfs:comment "A data concept for a measurement value." .
+    rdfs:range xsd:gYear ;
+    rdfs:comment "A year." .
 
 j:CrashDriverType
     a owl:Class ;
     rdfs:subClass nc:PersonType ;
-    rdfs:comment "A data type for a motor vehicle driver involved in a traffic accident." ;
-    owl:subclassOf [
-        a owl:Restriction ;
-        owl:cardinality "1"^^xsd:nonNegativeInteger ;
-        owl:onProperty j:DriverLicense
-    ] .
+    rdfs:comment "A data type for a motor vehicle driver involved in a traffic accident." .
 
 nc:PersonNameType
     a owl:Class ;
-    rdfs:comment "A data type for a combination of names and/or titles by which a person is known." .
+    rdfs:comment "A data type for a combination of names and/or titles by which a person is known." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:PersonGivenName
+    ] ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:PersonSurName
+    ] .
 
 hs:PersonOtherKinAssociationType
     a owl:Class ;
     rdfs:subClass nc:AssociationType ;
-    rdfs:comment "A data type for a relationship that is a kinship or other close personal association between the source object and the target object. The relationship between a parent and a child should be captured using the ParentChildAssociation" .
+    rdfs:comment "A data type for a relationship that is a kinship or other close personal association between the source object and the target object. The relationship between a parent and a child should be captured using the ParentChildAssociation" ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty hs:SourcePerson
+    ] ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty hs:TargetPerson
+    ] ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty hs:PersonOtherKinAssociationCategoryAbstract
+    ] .
 
 j:DrivingIncidentType
     a owl:Class ;
@@ -312,7 +347,12 @@ j:DrivingIncidentType
     rdfs:comment "A data type for details of an incident involving a vehicle." .
 
 priv:PrivacyMetadataType
-    a owl:Class .
+    a owl:Class ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty priv:PrivacyCode
+    ] .
 
 j:CrashVehicleType
     a owl:Class ;
@@ -327,13 +367,13 @@ j:DriverLicenseBaseType
     a owl:Class ;
     rdfs:comment "A data type for an authorization issued to a driver granting driving privileges." .
 
-exch:CrashDriverInfoType
+exch:PersonFictionalGenreCodeType
     a owl:Class ;
-    rdfs:comment "A data type for a collection of legal charges associated with the driver of a vehicle in a crash." ;
+    rdfs:comment "A data type for the genre of a fictional character." ;
     owl:subclassOf [
         a owl:Restriction ;
         owl:cardinality "1"^^xsd:nonNegativeInteger ;
-        owl:onProperty j:Crash
+        owl:onProperty exch:PersonFictionalGenreCodeLiteral
     ] .
 
 nc:DateType
@@ -367,6 +407,19 @@ nc:ActivityType
     a owl:Class ;
     rdfs:comment "A data type for a single or set of related actions, events, or process steps." .
 
+niem-gml:PointAdapterType
+    a owl:Class ;
+    rdfs:comment "A data type for a 2D or 3D geometric point.  A gml:Point is defined by a single coordinate tuple. The direct position of a point is specified by the gml:pos element which is of type gml:DirectPositionType." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty gml:Point
+    ] .
+
+exch:ReferenceObjectType
+    a owl:Class ;
+    rdfs:comment "A data type for objects that do not apply to their parent (and appear only by reference)." .
+
 j:CrashType
     a owl:Class ;
     rdfs:subClass j:DrivingIncidentType ;
@@ -384,29 +437,40 @@ j:CrashType
 
 nc:LatitudeCoordinateType
     a owl:Class ;
-    rdfs:comment "A data type for a measurement of the angular distance between a point on the Earth and the Equator." .
+    rdfs:comment "A data type for a measurement of the angular distance between a point on the Earth and the Equator." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:LatitudeDegreeValue
+    ] .
 
 nc:LengthMeasureType
     a owl:Class ;
     rdfs:subClass nc:MeasureType ;
-    rdfs:comment "A data type for a measure of a distance or extent." .
+    rdfs:comment "A data type for a measure of a distance or extent." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:LengthUnitAbstract
+    ] .
 
 nc:MeasureType
     a owl:Class ;
-    rdfs:comment "A data type for a measurement." .
-
-hs:ParentChildAssociationType
-    a owl:Class ;
-    rdfs:subClass nc:AssociationType ;
-    rdfs:comment "A data type for an association between a child and a person who is in a parent role toward that child." .
-
-hs:ChildType
-    a owl:Class ;
-    rdfs:comment "A data type for information about a person who has not yet reached the age of legal majority (i.e., adulthood)." .
+    rdfs:comment "A data type for a measurement." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:MeasureValueAbstract
+    ] .
 
 j:ChargeType
     a owl:Class ;
-    rdfs:comment "A data type for a formal allegation that a specific person has committed a specific offense." .
+    rdfs:comment "A data type for a formal allegation that a specific person has committed a specific offense." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty j:ChargeDescriptionText
+    ] .
 
 nc:PersonType
     a owl:Class ;
@@ -414,17 +478,17 @@ nc:PersonType
 
 nc:LongitudeCoordinateType
     a owl:Class ;
-    rdfs:comment "A data type for a measurement of the angular distance between a point on the Earth and the Prime Meridian." .
+    rdfs:comment "A data type for a measurement of the angular distance between a point on the Earth and the Prime Meridian." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:LongitudeDegreeValue
+    ] .
 
 j:CrashPersonType
     a owl:Class ;
     rdfs:subClass nc:PersonType ;
-    rdfs:comment "A data type for any person involved in a traffic accident." ;
-    owl:subclassOf [
-        a owl:Restriction ;
-        owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-        owl:onProperty j:CrashPersonInjury
-    ] .
+    rdfs:comment "A data type for any person involved in a traffic accident." .
 
 j:PersonChargeAssociationType
     a owl:Class ;
@@ -443,11 +507,26 @@ j:PersonChargeAssociationType
 
 nc:IdentificationType
     a owl:Class ;
-    rdfs:comment "A data type for a representation of an identity." .
+    rdfs:comment "A data type for a representation of an identity." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:IdentificationID
+    ] .
 
 nc:InjuryType
     a owl:Class ;
-    rdfs:comment "A data type for a form of harm or damage sustained by a person." .
+    rdfs:comment "A data type for a form of harm or damage sustained by a person." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:InjuryDescriptionText
+    ] ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:InjurySeverityAbstract
+    ] .
 
 nc:Location2DGeospatialCoordinateType
     a owl:Class ;
@@ -461,6 +540,15 @@ nc:Location2DGeospatialCoordinateType
         a owl:Restriction ;
         owl:cardinality "1"^^xsd:nonNegativeInteger ;
         owl:onProperty nc:GeographicCoordinateLongitude
+    ] .
+
+exch:CrashDriverInfoType
+    a owl:Class ;
+    rdfs:comment "A data type for a collection of legal charges associated with the driver of a vehicle in a crash." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty j:Crash
     ] .
 
 nc:IncidentType
@@ -480,4 +568,9 @@ nc:PersonUnionAssociationType
 
 nc:LocationType
     a owl:Class ;
-    rdfs:comment "A data type for geospatial location." .
+    rdfs:comment "A data type for geospatial location." ;
+    owl:subclassOf [
+        a owl:Restriction ;
+        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onProperty nc:LocationGeospatialCoordinateAbstract
+    ] .

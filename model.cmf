@@ -26,7 +26,7 @@
     <DocumentFilePathText>niem/codes/aamva_d20.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>OTHERNIEM</NamespaceCategoryCode>
     <NamespaceVersionText>ps02</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
     <LocalTerm>
       <TermName>AAMVA</TermName>
@@ -66,21 +66,83 @@
     </LocalTerm>
   </Namespace>
   <Namespace structures:id="exch">
-    <NamespaceURI>http://example.com/CrashDriver/1.2/</NamespaceURI>
+    <NamespaceURI>http://example.com/CrashDriver/1.3/</NamespaceURI>
     <NamespacePrefixText>exch</NamespacePrefixText>
     <DocumentationText>This is the extension schema for an example IEPD used to illustrate guidance for representing an IEP in JSON-LD syntax.</DocumentationText>
     <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#SubsetSchemaDocument</ConformanceTargetURI>
     <DocumentFilePathText>CrashDriver.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>EXTENSION</NamespaceCategoryCode>
     <NamespaceVersionText>1</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
+    <AugmentationRecord>
+      <Class structures:ref="exch.PersonFictionalGenreCodeType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="priv.PrivacyMetadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="j.ChargeType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="nc.Metadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>0</AugmentationIndex>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="j.ChargeType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="priv.PrivacyMetadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>1</AugmentationIndex>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="j.PersonChargeAssociationType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="nc.Metadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>0</AugmentationIndex>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="j.PersonChargeAssociationType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="priv.PrivacyMetadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>1</AugmentationIndex>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="nc.InjuryType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="priv.PrivacyMetadata" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <AugmentationIndex>0</AugmentationIndex>
+    </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="nc.PersonNameType" xsi:nil="true"/>
+      <DataProperty structures:ref="priv.privacyRelationCode" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </AugmentationRecord>
     <AugmentationRecord>
       <Class structures:ref="nc.PersonType" xsi:nil="true"/>
       <DataProperty structures:ref="exch.PersonFictionalCharacterIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </AugmentationRecord>
+    <AugmentationRecord>
+      <Class structures:ref="nc.PersonType" xsi:nil="true"/>
+      <ObjectProperty structures:ref="exch.PersonFictionalGenreCode" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+    </AugmentationRecord>
+  </Namespace>
+  <Namespace structures:id="gml">
+    <NamespaceURI>http://www.opengis.net/gml/3.2</NamespaceURI>
+    <NamespacePrefixText>gml</NamespacePrefixText>
+    <DocumentationText>GML Subset schema for gml:AngleType,gml:Curve,gml:Envelope,gml:AbstractFeature,gml:AbstractGeometricPrimitiveType,gml:AbstractGeoemetry,gml:LengthType,gml:LineString,gml:MultiCurve,gml:MultiGeometry,gml:MultiPoint,gml:MultiSurface,gml:Point,gml:Polygon,gml:Surface, written by
+                    gmlSubset.xslt. </DocumentationText>
+    <DocumentFilePathText>niem/external/gml/3.2.1/gml.xsd</DocumentFilePathText>
+    <NamespaceCategoryCode>EXTERNAL</NamespaceCategoryCode>
+    <NamespaceVersionText>3.2.1 2010-01-28</NamespaceVersionText>
   </Namespace>
   <Namespace structures:id="hs">
     <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/domains/humanServices/6.0/</NamespaceURI>
@@ -90,7 +152,7 @@
     <DocumentFilePathText>niem/domains/hs.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>DOMAIN</NamespaceCategoryCode>
     <NamespaceVersionText>ps02</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
   </Namespace>
   <Namespace structures:id="j">
@@ -101,20 +163,20 @@
     <DocumentFilePathText>niem/domains/justice.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>DOMAIN</NamespaceCategoryCode>
     <NamespaceVersionText>ps02</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
     <AugmentationRecord>
       <Class structures:ref="nc.MetadataType" xsi:nil="true"/>
       <DataProperty structures:ref="j.CriminalInformationIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
       <AugmentationIndex>0</AugmentationIndex>
     </AugmentationRecord>
     <AugmentationRecord>
       <Class structures:ref="nc.MetadataType" xsi:nil="true"/>
       <DataProperty structures:ref="j.IntelligenceInformationIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
       <AugmentationIndex>1</AugmentationIndex>
     </AugmentationRecord>
     <AugmentationRecord>
@@ -133,8 +195,48 @@
     <DocumentFilePathText>niem/niem-core.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>CORE</NamespaceCategoryCode>
     <NamespaceVersionText>psd01</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
+  </Namespace>
+  <Namespace structures:id="niem-gml">
+    <NamespaceURI>https://docs.oasis-open.org/niemopen/ns/model/adapters/niem-gml/6.0/</NamespaceURI>
+    <NamespacePrefixText>niem-gml</NamespacePrefixText>
+    <DocumentationText>NIEM adapter types for geospatial components from GML 3.2.1, a subset of which is included with this release as an external standard.  The Geography Markup Language (GML) is defined by the Open Geospatial Consortium (OGC).</DocumentationText>
+    <DocumentationText>
+      NIEM Model Version 6.0
+      Project Specification 02
+      1 January 2025
+      Copyright (c) OASIS Open 2025. All Rights Reserved.
+      Source: https://docs.oasis-open.org/niemopen/niem-model/v6.0/ps02/xsd/
+      Latest stage of narrative specification: https://docs.oasis-open.org/niemopen/niem-model/v6.0/niem-model-v6.0.html
+      NIEMOpen IPR Statement: https://github.com/niemopen/oasis-open-project/blob/main/IPR-STATEMENT.md
+      License: https://github.com/niemopen/niem-model/blob/main/LICENSE.md.
+      This work is licensed under a Creative Commons Attribution 4.0 International License:
+      CC BY 4.0: Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/.
+      In addition to the above license, each Contributor also agrees in the CLA to provide the additional Specification Non-Assertion Covenants to support finally-approved for any Project Specifications, as explained in Section 15.3 of the OASIS Open Project Rules.
+    </DocumentationText>
+    <ConformanceTargetURI>https://docs.oasis-open.org/niemopen/ns/specification/NDR/6.0/#ReferenceSchemaDocument</ConformanceTargetURI>
+    <DocumentFilePathText>niem/adapters/niem-gml.xsd</DocumentFilePathText>
+    <NamespaceCategoryCode>OTHERNIEM</NamespaceCategoryCode>
+    <NamespaceVersionText>ps02</NamespaceVersionText>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
+    <NamespaceLanguageName>en-US</NamespaceLanguageName>
+    <ImportDocumentation>
+      <NamespaceURI>http://www.opengis.net/gml/3.2</NamespaceURI>
+      <DocumentationText>Geography Markup Language (GML) version 3.2.1 schemas.  See http://www.opengeospatial.org OGC document 07-036 for documentation: "The Geography Markup Language (GML) was originally developed within the Open Geospatial Consortium, Inc. (OGC). ISO 19136 was prepared by ISO/TC 211 jointly with the OGC."  See http://schemas.opengis.net/gml/ for schemas.</DocumentationText>
+    </ImportDocumentation>
+    <LocalTerm>
+      <TermName>GML</TermName>
+      <TermLiteralText>Geography Markup Language</TermLiteralText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>Multi</TermName>
+      <DocumentationText>one or more</DocumentationText>
+    </LocalTerm>
+    <LocalTerm>
+      <TermName>OGC</TermName>
+      <TermLiteralText>Open Geospatial Consortium</TermLiteralText>
+    </LocalTerm>
   </Namespace>
   <Namespace structures:id="priv">
     <NamespaceURI>http://example.com/PrivacyMetadata/2.0/</NamespaceURI>
@@ -144,7 +246,7 @@
     <DocumentFilePathText>PrivacyMetadata.xsd</DocumentFilePathText>
     <NamespaceCategoryCode>EXTENSION</NamespaceCategoryCode>
     <NamespaceVersionText>1</NamespaceVersionText>
-    <NIEMVersionName>NIEM6.0</NIEMVersionName>
+    <ArchitectureVersionName>NIEM6.0</ArchitectureVersionName>
     <NamespaceLanguageName>en-US</NamespaceLanguageName>
   </Namespace>
   <Namespace structures:id="xs">
@@ -164,24 +266,34 @@
     <DocumentationText>True if this person is a fictional character in a literary work; false otherwise.</DocumentationText>
     <Datatype structures:ref="xs.boolean" xsi:nil="true"/>
   </DataProperty>
-  <ObjectProperty structures:id="hs.Child">
-    <Name>Child</Name>
-    <Namespace structures:ref="hs" xsi:nil="true"/>
-    <DocumentationText>A person who was an unmarried minor at the time of his or her involvement in a judicial proceeding or non-judicial program.</DocumentationText>
-    <Class structures:ref="hs.ChildType" xsi:nil="true"/>
+  <ObjectProperty structures:id="exch.PersonFictionalGenreCode">
+    <Name>PersonFictionalGenreCode</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>A genre of a fictional character.</DocumentationText>
+    <Class structures:ref="exch.PersonFictionalGenreCodeType" xsi:nil="true"/>
   </ObjectProperty>
-  <ObjectProperty structures:id="hs.Parent">
-    <Name>Parent</Name>
-    <Namespace structures:ref="hs" xsi:nil="true"/>
-    <DocumentationText>A father or mother of a person.</DocumentationText>
-    <Class structures:ref="nc.PersonType" xsi:nil="true"/>
+  <DataProperty structures:id="exch.PersonFictionalGenreCodeLiteral">
+    <Name>PersonFictionalGenreCodeLiteral</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>A data type for the genre of a fictional character.</DocumentationText>
+    <Datatype structures:ref="exch.PersonFictionalGenreCodeSimpleType" xsi:nil="true"/>
+  </DataProperty>
+  <ObjectProperty structures:id="exch.ReferenceObjects">
+    <Name>ReferenceObjects</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>Objects that do not apply to their parent (and appear only by reference).</DocumentationText>
+    <Class structures:ref="exch.ReferenceObjectType" xsi:nil="true"/>
   </ObjectProperty>
-  <ObjectProperty structures:id="hs.ParentChildAssociation">
-    <Name>ParentChildAssociation</Name>
-    <Namespace structures:ref="hs" xsi:nil="true"/>
-    <DocumentationText>An association between a child and a person who is in a parent role toward that child.</DocumentationText>
-    <Class structures:ref="hs.ParentChildAssociationType" xsi:nil="true"/>
+  <ObjectProperty structures:id="gml.Point">
+    <Name>Point</Name>
+    <Namespace structures:ref="gml" xsi:nil="true"/>
   </ObjectProperty>
+  <DataProperty structures:id="hs.HouseholdMemberIndicator">
+    <Name>HouseholdMemberIndicator</Name>
+    <Namespace structures:ref="hs" xsi:nil="true"/>
+    <DocumentationText>True if the associated person is a household member; false otherwise.</DocumentationText>
+    <Datatype structures:ref="xs.boolean" xsi:nil="true"/>
+  </DataProperty>
   <ObjectProperty structures:id="hs.PersonOtherKinAssociation">
     <Name>PersonOtherKinAssociation</Name>
     <Namespace structures:ref="hs" xsi:nil="true"/>
@@ -201,6 +313,25 @@
     <SubPropertyOf structures:ref="hs.PersonOtherKinAssociationCategoryAbstract" xsi:nil="true"/>
     <Datatype structures:ref="hs.PersonOtherKinAssociationCodeType" xsi:nil="true"/>
   </DataProperty>
+  <DataProperty structures:id="hs.PersonOtherKinAssociationCategoryText">
+    <Name>PersonOtherKinAssociationCategoryText</Name>
+    <Namespace structures:ref="hs" xsi:nil="true"/>
+    <DocumentationText>A kind of kinship or other close personal relationship that exists from the source person to the target person.</DocumentationText>
+    <SubPropertyOf structures:ref="hs.PersonOtherKinAssociationCategoryAbstract" xsi:nil="true"/>
+    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
+  </DataProperty>
+  <ObjectProperty structures:id="hs.SourcePerson">
+    <Name>SourcePerson</Name>
+    <Namespace structures:ref="hs" xsi:nil="true"/>
+    <DocumentationText>A person that is the start point of a directed association</DocumentationText>
+    <Class structures:ref="nc.PersonType" xsi:nil="true"/>
+  </ObjectProperty>
+  <ObjectProperty structures:id="hs.TargetPerson">
+    <Name>TargetPerson</Name>
+    <Namespace structures:ref="hs" xsi:nil="true"/>
+    <DocumentationText>A person that represents the end point of a directed association</DocumentationText>
+    <Class structures:ref="nc.PersonType" xsi:nil="true"/>
+  </ObjectProperty>
   <ObjectProperty structures:id="j.Charge">
     <Name>Charge</Name>
     <Namespace structures:ref="j" xsi:nil="true"/>
@@ -423,13 +554,6 @@
     <DocumentationText>Information that further qualifies primary data; data about data.</DocumentationText>
     <Class structures:ref="nc.MetadataType" xsi:nil="true"/>
   </ObjectProperty>
-  <DataProperty structures:id="nc.metadataRef">
-    <Name>metadataRef</Name>
-    <Namespace structures:ref="nc" xsi:nil="true"/>
-    <DocumentationText>A list of metadata objects that apply to a node or object represented by an XML element.</DocumentationText>
-    <Datatype structures:ref="xs.IDREFS" xsi:nil="true"/>
-    <AttributeIndicator>true</AttributeIndicator>
-  </DataProperty>
   <ObjectProperty structures:id="nc.Person">
     <Name>Person</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -452,6 +576,7 @@
     <Name>PersonMiddleName</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A middle name of a person.</DocumentationText>
+    <OrderedPropertyIndicator>true</OrderedPropertyIndicator>
     <Datatype structures:ref="nc.PersonNameTextType" xsi:nil="true"/>
   </DataProperty>
   <ObjectProperty structures:id="nc.PersonName">
@@ -467,6 +592,12 @@
     <Datatype structures:ref="xs.string" xsi:nil="true"/>
     <AttributeIndicator>true</AttributeIndicator>
   </DataProperty>
+  <DataProperty structures:id="nc.PersonNameSalutationText">
+    <Name>PersonNameSalutationText</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DocumentationText>A formal sign or expression of greeting that is appropriate for this person.</DocumentationText>
+    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
+  </DataProperty>
   <DataProperty structures:id="nc.PersonSurName">
     <Name>PersonSurName</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
@@ -479,11 +610,44 @@
     <DocumentationText>An association between two persons who are in a state of union with each other.</DocumentationText>
     <Class structures:ref="nc.PersonUnionAssociationType" xsi:nil="true"/>
   </ObjectProperty>
+  <ObjectProperty structures:id="nc.PersonUnionCategoryAbstract">
+    <Name>PersonUnionCategoryAbstract</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DocumentationText>A data concept for a kind of union between two people.</DocumentationText>
+    <AbstractIndicator>true</AbstractIndicator>
+  </ObjectProperty>
+  <DataProperty structures:id="nc.PersonUnionCategoryText">
+    <Name>PersonUnionCategoryText</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DocumentationText>A kind of union between two people.</DocumentationText>
+    <SubPropertyOf structures:ref="nc.PersonUnionCategoryAbstract" xsi:nil="true"/>
+    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
+  </DataProperty>
   <ObjectProperty structures:id="nc.ReportedDate">
     <Name>ReportedDate</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A date information was observed, measured, identified, or became known.</DocumentationText>
     <Class structures:ref="nc.DateType" xsi:nil="true"/>
+  </ObjectProperty>
+  <DataProperty structures:id="nc.SourceIDText">
+    <Name>SourceIDText</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DocumentationText>A number or string set by a data provider so that information that is sent can be retraced back to its source.</DocumentationText>
+    <Datatype structures:ref="nc.TextType" xsi:nil="true"/>
+  </DataProperty>
+  <DataProperty structures:id="nc.YearDate">
+    <Name>YearDate</Name>
+    <Namespace structures:ref="nc" xsi:nil="true"/>
+    <DocumentationText>A year.</DocumentationText>
+    <SubPropertyOf structures:ref="nc.DateRepresentation" xsi:nil="true"/>
+    <Datatype structures:ref="xs.gYear" xsi:nil="true"/>
+  </DataProperty>
+  <ObjectProperty structures:id="niem-gml.LocationGeospatialPointAdapter">
+    <Name>LocationGeospatialPointAdapter</Name>
+    <Namespace structures:ref="niem-gml" xsi:nil="true"/>
+    <DocumentationText>A 2D or 3D geometric point.  A gml:Point is defined by a single coordinate tuple. The direct position of a point is specified by the gml:pos element which is of type gml:DirectPositionType.</DocumentationText>
+    <SubPropertyOf structures:ref="nc.LocationGeospatialCoordinateAbstract" xsi:nil="true"/>
+    <Class structures:ref="niem-gml.PointAdapterType" xsi:nil="true"/>
   </ObjectProperty>
   <DataProperty structures:id="priv.PrivacyCode">
     <Name>PrivacyCode</Name>
@@ -495,12 +659,12 @@
     <Namespace structures:ref="priv" xsi:nil="true"/>
     <Class structures:ref="priv.PrivacyMetadataType" xsi:nil="true"/>
   </ObjectProperty>
-  <DataProperty structures:id="priv.privacyMetadataRef">
-    <Name>privacyMetadataRef</Name>
+  <DataProperty structures:id="priv.privacyRelationCode">
+    <Name>privacyRelationCode</Name>
     <Namespace structures:ref="priv" xsi:nil="true"/>
-    <Datatype structures:ref="xs.IDREFS" xsi:nil="true"/>
+    <RelationshipIndicator>true</RelationshipIndicator>
+    <Datatype structures:ref="priv.PrivacyCodeType" xsi:nil="true"/>
     <AttributeIndicator>true</AttributeIndicator>
-    <RefAttributeIndicator>true</RefAttributeIndicator>
   </DataProperty>
   <Class structures:id="exch.CrashDriverInfoType">
     <Name>CrashDriverInfoType</Name>
@@ -527,15 +691,30 @@
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
-      <ObjectProperty structures:ref="hs.ParentChildAssociation" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </ChildPropertyAssociation>
-    <ChildPropertyAssociation>
       <ObjectProperty structures:ref="hs.PersonOtherKinAssociation" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="exch.ReferenceObjects" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+  </Class>
+  <Class structures:id="exch.PersonFictionalGenreCodeType">
+    <Name>PersonFictionalGenreCodeType</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>A data type for the genre of a fictional character.</DocumentationText>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="exch.PersonFictionalGenreCodeLiteral" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+  </Class>
+  <Class structures:id="exch.ReferenceObjectType">
+    <Name>ReferenceObjectType</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>A data type for objects that do not apply to their parent (and appear only by reference).</DocumentationText>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.Metadata" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
@@ -547,35 +726,29 @@
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
-  <Class structures:id="hs.ChildType">
-    <Name>ChildType</Name>
-    <Namespace structures:ref="hs" xsi:nil="true"/>
-    <DocumentationText>A data type for information about a person who has not yet reached the age of legal majority (i.e., adulthood).</DocumentationText>
-  </Class>
-  <Class structures:id="hs.ParentChildAssociationType">
-    <Name>ParentChildAssociationType</Name>
-    <Namespace structures:ref="hs" xsi:nil="true"/>
-    <DocumentationText>A data type for an association between a child and a person who is in a parent role toward that child.</DocumentationText>
-    <SubClassOf structures:ref="nc.AssociationType" xsi:nil="true"/>
-    <ChildPropertyAssociation>
-      <ObjectProperty structures:ref="hs.Child" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </ChildPropertyAssociation>
-    <ChildPropertyAssociation>
-      <ObjectProperty structures:ref="hs.Parent" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </ChildPropertyAssociation>
-  </Class>
   <Class structures:id="hs.PersonOtherKinAssociationType">
     <Name>PersonOtherKinAssociationType</Name>
     <Namespace structures:ref="hs" xsi:nil="true"/>
     <DocumentationText>A data type for a relationship that is a kinship or other close personal association between the source object and the target object. The relationship between a parent and a child should be captured using the ParentChildAssociation</DocumentationText>
     <SubClassOf structures:ref="nc.AssociationType" xsi:nil="true"/>
     <ChildPropertyAssociation>
-      <ObjectProperty structures:ref="hs.PersonOtherKinAssociationCategoryAbstract" xsi:nil="true"/>
+      <ObjectProperty structures:ref="hs.SourcePerson" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="hs.TargetPerson" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="hs.HouseholdMemberIndicator" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="hs.PersonOtherKinAssociationCategoryAbstract" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
@@ -586,16 +759,11 @@
     <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="j.ChargeDescriptionText" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="j.ChargeFelonyIndicator" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </ChildPropertyAssociation>
-    <ChildPropertyAssociation>
-      <DataProperty structures:ref="nc.metadataRef" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
@@ -607,7 +775,7 @@
     <SubClassOf structures:ref="nc.PersonType" xsi:nil="true"/>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="j.DriverLicense" xsi:nil="true"/>
-      <MinOccursQuantity>1</MinOccursQuantity>
+      <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
@@ -619,7 +787,7 @@
     <ReferenceCode>ANY</ReferenceCode>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="j.CrashPersonInjury" xsi:nil="true"/>
-      <MinOccursQuantity>1</MinOccursQuantity>
+      <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
@@ -691,11 +859,6 @@
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
-    <ChildPropertyAssociation>
-      <DataProperty structures:ref="nc.metadataRef" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>1</MaxOccursQuantity>
-    </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.ActivityType">
     <Name>ActivityType</Name>
@@ -733,8 +896,8 @@
     <DocumentationText>A data type for a representation of an identity.</DocumentationText>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.IdentificationID" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.IncidentType">
@@ -749,17 +912,12 @@
     <DocumentationText>A data type for a form of harm or damage sustained by a person.</DocumentationText>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.InjuryDescriptionText" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.InjurySeverityAbstract" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-    </ChildPropertyAssociation>
-    <ChildPropertyAssociation>
-      <DataProperty structures:ref="priv.privacyMetadataRef" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
       <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
@@ -769,8 +927,8 @@
     <DocumentationText>A data type for a measurement of the angular distance between a point on the Earth and the Equator.</DocumentationText>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.LatitudeDegreeValue" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.LengthMeasureType">
@@ -780,8 +938,8 @@
     <SubClassOf structures:ref="nc.MeasureType" xsi:nil="true"/>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.LengthUnitAbstract" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.Location2DGeospatialCoordinateType">
@@ -805,8 +963,8 @@
     <DocumentationText>A data type for geospatial location.</DocumentationText>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.LocationGeospatialCoordinateAbstract" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.LongitudeCoordinateType">
@@ -815,8 +973,8 @@
     <DocumentationText>A data type for a measurement of the angular distance between a point on the Earth and the Prime Meridian.</DocumentationText>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.LongitudeDegreeValue" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.MeasureType">
@@ -825,15 +983,15 @@
     <DocumentationText>A data type for a measurement.</DocumentationText>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.MeasureValueAbstract" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.MetadataType">
     <Name>MetadataType</Name>
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for information that further qualifies primary data; data about data.</DocumentationText>
-    <ReferenceCode>ANY</ReferenceCode>
+    <ReferenceCode>IDREF</ReferenceCode>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.ReportedDate" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
@@ -845,6 +1003,11 @@
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for an association between people.</DocumentationText>
     <SubClassOf structures:ref="nc.AssociationType" xsi:nil="true"/>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="nc.Person" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+    </ChildPropertyAssociation>
   </Class>
   <Class structures:id="nc.PersonNameType">
     <Name>PersonNameType</Name>
@@ -852,17 +1015,21 @@
     <DocumentationText>A data type for a combination of names and/or titles by which a person is known.</DocumentationText>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.PersonGivenName" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.PersonMiddleName" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
-      <OrderedPropertyIndicator>true</OrderedPropertyIndicator>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="nc.PersonSurName" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="nc.PersonNameSalutationText" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
@@ -880,7 +1047,7 @@
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.PersonBirthDate" xsi:nil="true"/>
       <MinOccursQuantity>0</MinOccursQuantity>
-      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
     </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <ObjectProperty structures:ref="nc.PersonName" xsi:nil="true"/>
@@ -893,13 +1060,35 @@
     <Namespace structures:ref="nc" xsi:nil="true"/>
     <DocumentationText>A data type for an association between two persons who are in a state of union with each other.</DocumentationText>
     <SubClassOf structures:ref="nc.PersonAssociationType" xsi:nil="true"/>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="nc.PersonUnionCategoryAbstract" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>unbounded</MaxOccursQuantity>
+    </ChildPropertyAssociation>
+  </Class>
+  <Class structures:id="niem-gml.PointAdapterType">
+    <Name>PointAdapterType</Name>
+    <Namespace structures:ref="niem-gml" xsi:nil="true"/>
+    <DocumentationText>A data type for a 2D or 3D geometric point.  A gml:Point is defined by a single coordinate tuple. The direct position of a point is specified by the gml:pos element which is of type gml:DirectPositionType.</DocumentationText>
+    <ChildPropertyAssociation>
+      <ObjectProperty structures:ref="gml.Point" xsi:nil="true"/>
+      <MinOccursQuantity>1</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+      <DocumentationText>A gml:Point is defined by a single coordinate tuple. The direct position of a point is specified by the gml:pos element which is of type gml:DirectPositionType.</DocumentationText>
+    </ChildPropertyAssociation>
   </Class>
   <Class structures:id="priv.PrivacyMetadataType">
     <Name>PrivacyMetadataType</Name>
     <Namespace structures:ref="priv" xsi:nil="true"/>
+    <ReferenceCode>IDREF</ReferenceCode>
+    <ChildPropertyAssociation>
+      <DataProperty structures:ref="nc.SourceIDText" xsi:nil="true"/>
+      <MinOccursQuantity>0</MinOccursQuantity>
+      <MaxOccursQuantity>1</MaxOccursQuantity>
+    </ChildPropertyAssociation>
     <ChildPropertyAssociation>
       <DataProperty structures:ref="priv.PrivacyCode" xsi:nil="true"/>
-      <MinOccursQuantity>0</MinOccursQuantity>
+      <MinOccursQuantity>1</MinOccursQuantity>
       <MaxOccursQuantity>unbounded</MaxOccursQuantity>
     </ChildPropertyAssociation>
   </Class>
@@ -4894,6 +5083,20 @@
       <DocumentationText>Unknown</DocumentationText>
     </Facet>
   </Restriction>
+  <Restriction structures:id="exch.PersonFictionalGenreCodeSimpleType">
+    <Name>PersonFictionalGenreCodeSimpleType</Name>
+    <Namespace structures:ref="exch" xsi:nil="true"/>
+    <DocumentationText>A data type for the genre of a fictional character.</DocumentationText>
+    <RestrictionBase structures:ref="xs.token" xsi:nil="true"/>
+    <Facet>
+      <FacetCategoryCode>enumeration</FacetCategoryCode>
+      <FacetValue>MYSTERY</FacetValue>
+    </Facet>
+    <Facet>
+      <FacetCategoryCode>enumeration</FacetCategoryCode>
+      <FacetValue>SF</FacetValue>
+    </Facet>
+  </Restriction>
   <Restriction structures:id="hs.PersonOtherKinAssociationCodeType">
     <Name>PersonOtherKinAssociationCodeType</Name>
     <Namespace structures:ref="hs" xsi:nil="true"/>
@@ -5187,7 +5390,15 @@
       <FacetCategoryCode>enumeration</FacetCategoryCode>
       <FacetValue>PII</FacetValue>
     </Facet>
+    <Facet>
+      <FacetCategoryCode>enumeration</FacetCategoryCode>
+      <FacetValue>RESTRICTED</FacetValue>
+    </Facet>
   </Restriction>
+  <Datatype structures:id="xs.anyURI">
+    <Name>anyURI</Name>
+    <Namespace structures:ref="xs" xsi:nil="true"/>
+  </Datatype>
   <Datatype structures:id="xs.boolean">
     <Name>boolean</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
@@ -5200,8 +5411,12 @@
     <Name>decimal</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
-  <Datatype structures:id="xs.IDREFS">
-    <Name>IDREFS</Name>
+  <Datatype structures:id="xs.gYear">
+    <Name>gYear</Name>
+    <Namespace structures:ref="xs" xsi:nil="true"/>
+  </Datatype>
+  <Datatype structures:id="xs.ID">
+    <Name>ID</Name>
     <Namespace structures:ref="xs" xsi:nil="true"/>
   </Datatype>
   <Datatype structures:id="xs.string">

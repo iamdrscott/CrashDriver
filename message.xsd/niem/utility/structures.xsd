@@ -28,7 +28,7 @@
     <xs:attribute ref="structures:id"/>
     <xs:attribute ref="structures:ref"/>
     <xs:attribute ref="structures:uri"/>
-    <xs:anyAttribute processContents="skip" namespace="##other"/>
+    <xs:anyAttribute processContents="strict" namespace="##other"/>
   </xs:attributeGroup>
   <xs:complexType name="AdapterType" abstract="true">
     <xs:annotation>
